@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   def index
-    articles = Article.recent
+    articles = Article.paginate(page: params[:page])
     render json: serializer.new(articles), status: :ok
   end
 
